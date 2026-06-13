@@ -1,0 +1,99 @@
+:root {
+    --color-red-carmin: #B82222;
+    --color-red-vibrant: #D92B2B;
+    --color-burgundy: #8F1A1A;
+    --color-smoke: #F2F2F2;
+    --color-dark: #262626;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'DM Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    background-image: linear-gradient(rgba(242, 242, 242, 0.92), rgba(242, 242, 242, 0.92)), url('Logo Gps Warriors.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.app-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* Estilos de inputs */
+.field-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--color-dark);
+}
+.field-group input, .field-group select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid #e5e5e5;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--color-dark);
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.field-group input:focus, .field-group select:focus {
+    outline: none;
+    border-color: var(--color-red-carmin);
+    box-shadow: 0 0 0 3px rgba(184, 34, 34, 0.1);
+}
+.field-group input::placeholder { color: #999; }
+
+/* Animaciones */
+@keyframes fadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+@keyframes slideDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+.fade-in { animation: fadeIn 0.5s ease-out forwards; }
+.slide-down { animation: slideDown 0.6s ease-out forwards; }
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.section-header {
+    color: var(--color-dark);
+    font-weight: 600;
+    font-size: 16px;
+}
+.section-header i {
+    color: var(--color-red-carmin) !important;
+}
+.btn-submit {
+    background: linear-gradient(135deg, var(--color-red-carmin) 0%, var(--color-red-vibrant) 100%);
+    color: white;
+    transition: all 0.3s;
+}
+.btn-submit:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(184, 34, 34, 0.3); /* rgba ajustado a #B82222 */
+}
+.btn-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #999;
+}
+.error-msg {
+    background-color: rgba(184, 34, 34, 0.1);
+    border-color: var(--color-red-carmin);
+    color: var(--color-red-carmin);
+}
+.success-msg {
+    background-color: rgba(143, 26, 26, 0.1);
+    border-color: var(--color-burgundy);
+    color: var(--color-burgundy);
+}

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Plataforma GPS</title>
+
+    <link rel="icon" type="image/png" href="Logo%20Pestaña.jpeg">
+    <link rel="stylesheet" href="diseños.css">
+
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="app-wrapper flex flex-col min-h-screen">
+
+    <header class="shrink-0 relative overflow-hidden w-full bg-gradient-to-r from-[#B82222] to-[#8F1A1A] pt-12 pb-32"
+            style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+        <div class="relative z-10 px-6 py-8 text-center">
+            <div class="mb-6 slide-down flex justify-center items-center gap-6">
+                <i data-lucide="bike" style="width:56px;height:56px;color:var(--color-smoke);"></i>
+                <i data-lucide="car" style="width:56px;height:56px;color:var(--color-smoke);"></i>
+                <i data-lucide="truck" style="width:56px;height:56px;color:var(--color-smoke);"></i>
+            </div>
+            <div class="flex items-center justify-center gap-3 mb-3 slide-down" style="animation-delay:0.1s">
+                <h1 class="font-bold text-3xl text-white">Plataforma de Registro para los GPS Warriors</h1>
+            </div>
+            <p class="text-white/85 text-base">Vincula tus dispositivos y monitorea en tiempo real</p>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-2xl w-full mx-auto px-4 py-8 relative z-10 -mt-16 mb-8">
+        <div class="bg-white/50 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-white/60 fade-in">
+            <div class="text-center mb-8 pb-6 border-b border-gray-300/50">
+                <div class="flex justify-center mb-3">
+                    <div class="bg-white/70 p-3 rounded-full shadow-sm">
+                        <i data-lucide="map-pin" style="width:36px;height:36px;color:var(--color-red-carmin);"></i>
+                    </div>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">¡Bienvenido!</h2>
+                <p class="text-base text-gray-700 font-medium leading-relaxed">
+                    Gracias por preferir nuestra solución con Warriors GPS. A continuación, llena el siguiente formulario para continuar con el proceso.
+                </p>
+            </div>
+
+            <form id="reg-form" novalidate>
+                <section class="mb-8 fade-in">
+                    <h2 class="section-header flex items-center gap-2 mb-5">
+                        <i data-lucide="user" style="width:20px;height:20px;"></i>
+                        <span>Datos del Usuario</span>
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="field-group">
+                            <label for="nombre">Nombre</label>
+                            <input id="nombre" type="text" placeholder="Ej. Juan" maxlength="20" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" title="Solo se permiten letras" required>
+                        </div>
+                        <div class="field-group">
+                            <label for="apellido">Apellido</label>
+                            <input id="apellido" type="text" placeholder="Ej. Pérez" maxlength="20" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" title="Solo se permiten letras" required>
+                        </div>
+                        <div class="field-group sm:col-span-2">
+                            <label for="correo">Correo Electrónico</label>
+                            <input id="correo" type="email" placeholder="juan@correo.com" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" title="Debe ser un formato válido, ej: usuario@dominio.com" required>
+                            <p id="correo-error" class="text-red-500 text-xs mt-1 hidden">El correo debe cumplir con @entidad.com</p>
+                        </div>
+                        <div class="field-group sm:col-span-2">
+                            <label for="celular">Celular</label>
+                            <div class="relative flex">
+                                <span class="absolute inset-y-0 left-0 flex items-center px-3 text-gray-600 font-medium bg-gray-100 border-r border-[#e5e5e5] rounded-l-md" style="height: calc(100% - 4px); margin: 2px 0 0 2px;">+57</span>
+                                <input id="celular" type="tel" placeholder="3001234567" minlength="10" maxlength="10" pattern="[0-9]{10}" title="Debe contener exactamente 10 números" required style="padding-left: 65px;">
+                            </div>
+                            <p id="celular-error" class="text-red-500 text-xs mt-1 hidden">Debe tener 10 digitos</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-8 fade-in" style="animation-delay:0.1s">
+                    <h2 class="section-header flex items-center gap-2 mb-5">
+                        <i data-lucide="car" style="width:20px;height:20px;"></i>
+                        <span>Características del Vehículo</span>
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="field-group">
+                            <label for="tipo-vehiculo">Tipo de Vehículo</label>
+                            <select id="tipo-vehiculo" required>
+                                <option value="">-- Seleccione --</option>
+                                <option value="motocicleta">Motocicleta</option>
+                                <option value="Motocarro">Motocarro</option>
+                                <option value="automovil">Automóvil</option>
+                                <option value="camioneta">Camioneta</option>
+                                <option value="Bus">Bus</option>
+                                <option value="Camion">Camión</option>
+                                <option value="Tractomula">Tractomula</option>
+                            </select>
+                        </div>
+                        <div class="field-group">
+                            <label for="color-vehiculo">Color</label>
+                            <input id="color-vehiculo" type="text" placeholder="Ej. Blanco" maxlength="15" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" title="Solo se permiten letras" required>
+                        </div>
+                        <div class="field-group">
+                            <label for="modelo-vehiculo">Modelo (Año)</label>
+                            <input id="modelo-vehiculo" type="text" placeholder="Ej. 2024" minlength="4" maxlength="4" pattern="[0-9]{4}" title="Ingrese el año con exactamente 4 números" required>
+                            <p id="modelo-error" class="text-red-500 text-xs mt-1 hidden">Minimo 4 digitos</p>
+                        </div>
+                        <div class="field-group">
+                            <label for="placa">Placa</label>
+                            <input id="placa" type="text" placeholder="Ej. ABC123" minlength="5" maxlength="6" required style="text-transform: uppercase;">
+                            <p id="placa-error" class="text-red-500 text-xs mt-1 hidden">Debe tener minimo 5 digitos y maximo 6</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-8 fade-in" style="animation-delay:0.15s">
+                    <h2 class="section-header flex items-center gap-2 mb-5">
+                        <i data-lucide="cpu" style="width:20px;height:20px;"></i>
+                        <span>Dispositivo y Distribuidor</span>
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="field-group">
+                            <label for="imei">IMEI del Dispositivo</label>
+                            <input id="imei" type="text" placeholder="Últimos 6 dígitos" minlength="6" maxlength="6" pattern="[0-9]{6}" title="Debe contener exactamente 6 números" required>
+                            <p id="imei-error" class="text-red-500 text-xs mt-1 hidden">Debe tener 6 digitos</p>
+                        </div>
+                        <div class="field-group">
+                            <label for="codigo-distribuidor">Distribuidor</label>
+                            <input id="codigo-distribuidor" type="text" placeholder="Ej. 1234" required style="text-transform: uppercase;">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-8 fade-in" style="animation-delay:0.2s">
+                    <h2 class="section-header flex items-center gap-2 mb-5">
+                        <i data-lucide="lock" style="width:20px;height:20px;"></i>
+                        <span>Seguridad</span>
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="field-group relative">
+                            <label for="password">Crea una contraseña segura</label>
+                            <div class="relative">
+                                <input id="password" type="password" placeholder="Mínimo 8 caracteres" required class="w-full pr-10">
+                                <button type="button" onclick="togglePassword('password')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="eye" style="width:18px;height:18px;"></i>
+                                </button>
+                            </div>
+                            <p id="pass-error" class="text-red-500 text-xs mt-1 hidden">La contraseña no cumple con los requisitos.</p>
+                        </div>
+                        <div class="field-group">
+                            <label for="confirm-password">Confirma tu nueva contraseña</label>
+                            <div class="relative">
+                                <input id="confirm-password" type="password" placeholder="Repite la contraseña" required class="w-full pr-10">
+                                <button type="button" onclick="togglePassword('confirm-password')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="eye" style="width:18px;height:18px;"></i>
+                                </button>
+                            </div>
+                            <p id="match-error" class="text-red-500 text-xs mt-1 hidden">Las contraseñas no coinciden.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="mb-6 flex items-start gap-3 fade-in" style="animation-delay:0.25s">
+                    <input id="consent" type="checkbox" class="mt-1 w-5 h-5 flex-shrink-0 cursor-pointer" style="accent-color: var(--color-red-carmin);" disabled required>
+                    <label for="consent" class="text-sm leading-snug text-gray-700 cursor-pointer">
+                        Acepto los <a href="#" id="link-terminos" class="text-[#B82222] font-semibold hover:underline">términos, condiciones y la política de tratamiento de datos personales</a>.
+                    </label>
+                </div>
+
+                <div id="error-msg" class="hidden mb-4 p-4 rounded-lg border-2 error-msg text-sm fade-in text-center font-semibold"></div>
+
+                <div id="success-msg" class="hidden mb-6 p-6 rounded-lg border-2 border-green-500 bg-green-50/90 backdrop-blur-sm text-center fade-in">
+                    <div class="flex justify-center mb-3"> <i data-lucide="check-circle-2" style="width:56px;height:56px;color:#16a34a;"></i> </div>
+                    <p class="text-lg text-green-900 font-bold mb-2 leading-tight">La cuenta se ha registrado de forma exitosa.</p>
+                    <p class="text-sm text-green-800 font-medium mb-6">El GPS se activará en un tiempo estimado de 5 a 10 minutos.</p>
+                    <button type="button" id="btn-salir" class="mx-auto bg-white border-2 border-gray-200 text-gray-700 px-8 py-2 rounded-lg font-semibold transition-all hover:bg-gray-100 hover:border-gray-300 flex items-center justify-center gap-2 shadow-sm">
+                        <span>Salir</span> <i data-lucide="log-out" style="width:18px;height:18px;"></i>
+                    </button>
+                </div>
+
+                <button type="submit" id="submit-btn" disabled class="btn-submit w-full py-3 rounded-lg font-semibold text-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Registrar Dispositivo
+                </button>
+
+                <div id="loading-indicator" class="hidden w-full py-3 flex items-center justify-center gap-2" style="color: var(--color-red-carmin);">
+                    <svg class="spin" width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" stroke-opacity="0.3"/>
+                        <path d="M12 2a10 10 0 0 1 10 10"/>
+                    </svg>
+                    <span>Procesando registro...</span>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="shrink-0 relative overflow-hidden w-full bg-gradient-to-r from-[#B82222] to-[#8F1A1A] pt-32 pb-10 -mt-24" style="-webkit-mask-image: linear-gradient(to top, black 75%, transparent 100%); mask-image: linear-gradient(to top, black 75%, transparent 100%); z-index: 0;">
+        <div class="relative z-10 px-6 pt-4 pb-2 text-center">
+            <div class="flex justify-center mb-4"> <i data-lucide="clock" style="width:40px;height:40px;color:var(--color-smoke);"></i> </div>
+            <h3 class="font-bold text-2xl text-white mb-2">Horario de Activación para los GPS</h3>
+            <p class="text-white/90 text-[15px] font-medium max-w-lg mx-auto leading-relaxed mb-8">Lunes a Sábado de 9:00 am a 6:00 pm.<br>Las solicitudes recibidas los domingos, festivos o fuera del horario, serán procesadas el siguiente día laboral.</p>
+            <div class="pt-6 border-t border-white/20"> <p class="text-xs font-medium text-white/60">© 2026 Plataforma Warriors GPS. Todos los derechos reservados.</p> </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/573147220388?text=Hola, necesito ayuda con el registro de mi formulario para la activación de mi GPS Warriors" target="_blank" class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-[#B82222] to-[#8F1A1A] p-4 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center border-2 border-white/20">
+        <i data-lucide="message-circle" style="color:white; width:28px; height:28px;"></i>
+    </a>
+
+    <div id="pass-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4 fade-in">
+        <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-sm w-full border-t-4 border-[#B82222]">
+            <div class="flex justify-center mb-4"><div class="bg-red-50 p-3 rounded-full"><i data-lucide="shield-alert" style="width:36px;height:36px;color:var(--color-red-carmin);"></i></div></div>
+            <h3 class="text-xl font-bold text-center text-gray-800 mb-2">Contraseña Segura</h3>
+            <p class="text-sm text-gray-600 mb-5 text-center">Para proteger tu cuenta, asegúrate de cumplir con estos requisitos:</p>
+            <ul class="list-disc pl-6 mb-6 space-y-2 text-sm font-medium text-gray-700">
+                <li>Mínimo <strong>8 caracteres</strong></li>
+                <li>Una letra <strong>mayúscula</strong> (A-Z)</li>
+                <li>Una letra <strong>minúscula</strong> (a-z)</li>
+                <li>Al menos un <strong>número</strong> (0-9)</li>
+                <li>Un <strong>carácter especial</strong> (Ej. @, #, $, *)</li>
+            </ul>
+            <button type="button" id="btn-entendido" class="w-full bg-gradient-to-r from-[#B82222] to-[#8F1A1A] text-white py-3 rounded-lg font-bold text-lg hover:shadow-lg transition-all hover:-translate-y-0.5">Entendido</button>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4 fade-in">
+        <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-2xl w-full border-t-4 border-[#B82222] flex flex-col max-h-[80vh]">
+            <div class="flex justify-center mb-4">
+                <div class="bg-red-50 p-3 rounded-full">
+                    <i data-lucide="file-text" style="width:36px;height:36px;color:var(--color-red-carmin);"></i>
+                </div>
+            </div>
+            <h3 class="text-xl font-bold text-center text-gray-800 mb-4">Términos, Condiciones y Privacidad</h3>
+
+            <div class="overflow-y-auto pr-3 mb-6 text-sm text-gray-600 space-y-4 flex-1 custom-scrollbar">
+                <h4 class="font-bold text-gray-800 text-base border-b border-gray-200 pb-1 mt-2">1. Términos del Servicio</h4>
+                <p><strong>1.1 Uso de la Información:</strong> Al registrarse, acepta que la información será utilizada para la prestación del servicio de rastreo.</p>
+                <p><strong>1.2 Privacidad:</strong> Protegemos su información personal conforme a la ley.</p>
+                <p><strong>1.3 Responsabilidad:</strong> El usuario es responsable de su contraseña.</p>
+                <p><strong>1.4 Horarios:</strong> El soporte se rige bajo los horarios establecidos en nuestra plataforma.</p>
+
+                <h4 class="font-bold text-gray-800 text-base border-b border-gray-200 pb-1 mt-6">2. Política de Privacidad</h4>
+                <p>Informamos a los usuarios de <strong>warriorsgpstracker.com</strong> que algunos datos de carácter personal son recabados al navegar en nuestras páginas. Estos datos son regulados por leyes para proteger la privacidad de nuestros usuarios o visitantes.</p>
+                <p>Ciertas leyes están enfocadas en asegurar la privacidad de los internautas que visitan las páginas web. Estas exigen que se le indique a los usuarios cuándo cierta información de actividades hechas en el sitio es registrada y almacenada en su equipo. Aquí exponemos a todos nuestros usuarios el uso que le damos a su información personal y con qué finalidad es obtenida.</p>
+
+                <h4 class="font-bold text-gray-800 text-base border-b border-gray-200 pb-1 mt-6">3. Uso de cookies en nuestro sitio web</h4>
+                <p>Las cookies consisten en datos que son almacenados en el ordenador en el momento en que el usuario ingresa a una página web determinada o al realizar ciertas operaciones en ella. Las cookies sirven a las páginas web para mantener información de importancia sobre la actividad de cada uno de sus usuarios.</p>
+                <p>Esta información es usada cuando el usuario ingresa nuevamente al sitio web desde el mismo navegador o al iniciar sesión. La página web recupera dicha información de actividades previas del usuario y así ofrece un mejor modo de navegación a través del sitio web. Un sitio web puede utilizar varios tipos de cookies, cada uno con distintos propósitos.</p>
+                <p>En ningún momento las cookies son utilizadas para determinar la identidad de un usuario en particular. Su propósito general es facilitar el uso de un sitio web o proveer distintas opciones de personalización. Algunas cookies son empleadas para registrar el número de visitas hechas al sitio web. Otras tienen la función de proveer facilidades al acceso de usuarios registrados. Otras cookies se encargan de gestionar los anuncios publicitarios proveídos por terceros.</p>
+                <p>Los navegadores web, en general, aceptan las cookies bien sea temporal o permanentemente. También, la mayoría de navegadores tienen las opciones de configuración necesarias para gestionar las cookies de cualquier sitio web. En caso de no estar de acuerdo, el usuario puede borrar las cookies almacenadas en su ordenador o dispositivo móvil. Algunas cookies están destinadas a borrarse después de cierto tiempo, al terminar la sesión actual de un usuario, por ejemplo.</p>
+                <p><strong>warriorsgpstracker.com</strong> almacena datos en su ordenador, que son las cookies. Estos pueden ser eliminados en cualquier momento configurando su navegador. Al navegar por nuestra web, el usuario acepta expresamente el uso de nuestras cookies en su equipo y es consciente de que en cualquier momento puede borrar, bloquear y hasta rechazarlas. Asimismo, acepta que las cookies de <strong>warriorsgpstracker.com</strong> no son empleadas para violar su privacidad, sino que abarcan solo fines técnicos.</p>
+                <p>Estos datos almacenados serán utilizados legítimamente para todos o algunos de los fines antes mencionados. Ninguno de nuestros usuarios está expuesto a que su información sea utilizada de forma desaprobada o bochornosa ni tampoco se utilizará la misma para determinar la identidad de algún usuario específico, a no ser que uno o varios usuarios determinados incumplan con las leyes y, entonces, sean investigados por organismos judiciales o del gobierno que soliciten dicha información.</p>
+            </div>
+
+            <button type="button" id="btn-entendido-terms" class="w-full bg-gradient-to-r from-[#B82222] to-[#8F1A1A] text-white py-3 rounded-lg font-bold text-lg hover:shadow-lg transition-all hover:-translate-y-0.5 mt-auto shadow-md">
+                Acepto
+            </button>
+        </div>
+    </div>
+</div>
+<script src="metodos.js"></script>
+</body>
+</html>
